@@ -1,0 +1,40 @@
+
+<%- include("partials/head.ejs") %>
+
+<body>
+  <main>  <div class="box" id="heading">
+    <h1>
+      Tuesday, September 12
+    </h1>
+  </div>
+  <div class="box">
+   <% if(locals.myArray && locals.myArray.length != 0){ %>
+       <% for(e of myArray){ %>
+            <div class="item">
+                <input type="checkbox">
+                    <p>
+                    <%= e %>
+                    </p>
+            </div>     
+
+        <% } %>
+   <% } %>
+      
+      
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" />
+          <button type="submit" name="list" 
+         <% if(locals.isWork) { %>
+
+          value=<%="work"%> >+</button>
+         <% }else{ %>
+          value=<%="personal"%> >+</button>
+
+         <%}%>
+        </form>
+  </div>
+  </main>
+  <%- include("partials/footer.ejs") %>
+</body>
+
+</html>
