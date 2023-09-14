@@ -1,0 +1,42 @@
+
+<%- include("partials/head.ejs") %>
+
+<body>
+  <main>  <div class="box" id="heading">
+    <h1>
+    To-Do 
+    </h1>
+  </div>
+  <div class="box">
+   <% if(locals.myArray && locals.myArray.length != 0){ %>
+       <% for(e of myArray){ %>
+       <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=e._id%>" onChange="this.form.submit()">
+                    <p>
+                    <%= e.name %>
+                    </p>
+            </div>     
+
+	</form>
+        <% } %>
+   <% } %>
+      
+      
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" />
+          <button type="submit" name="list" 
+         <% if(locals.isWork) { %>
+
+          value=<%="work"%> >+</button>
+         <% }else{ %>
+          value=<%="personal"%> >+</button>
+
+         <%}%>
+        </form>
+  </div>
+  </main>
+  <%- include("partials/footer.ejs") %>
+</body>
+
+</html>
